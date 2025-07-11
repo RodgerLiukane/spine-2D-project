@@ -5,8 +5,30 @@
 
 <script>
 new spine.SpinePlayer("player-container", {
+	
+<!-- Spine files are below -->
+	
 	skeleton: "Chara03_08072025.json",
 	atlas: "Chara03_08072025.atlas",
-  	png: "Chara03_08072025.png"
+  	png: "Chara03_08072025.png",
+	
+<!-- Parameters are below -->
+	
+	animation: "Blink to Right",
+	animations: ["Blink to Right", "Bouncing Smile", "Happy to Right", "Idle", "Idle - Blink", "Loop Up-Right", "Smile to Right", "Very Happy", "Vary Happy Delay", "Very Happy to Right"],
+	defaultMix: 0.1,
+	interactive: false,
+	debug: {
+    		bones: true, 
+    		regions: false,
+    		meshes: false,
+    		bounds: false,
+   		 paths: false,
+    		clipping: false,
+    		points: false,
+    		hulls: false
+	 }
+	backgroundColor: "#ffffffff"
+	
 });
 </script>
