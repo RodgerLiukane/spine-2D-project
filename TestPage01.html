@@ -1,1 +1,29 @@
-Test page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spine Animation Demo</title>
+  <script src="https://esotericsoftware.com/files/spine-webplayer/spine-webplayer.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <spine-player 
+    src="NADIA.json"
+    atlas="Chara03_08072025.atlas"
+    image="Chara03_08072025.png"
+    background="#ffffff"
+    fit="contain"
+    animation="idle"
+    loop>
+  </spine-player>
+</body>
+</html>
