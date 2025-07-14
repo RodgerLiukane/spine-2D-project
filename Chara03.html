@@ -66,11 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const audioPlayer = document.getElementById("voice-player");
   const player = document.querySelector("spine-player");
 
-  if (!player) {
-    console.error("Spine player not found.");
-    return;
-  }
-
   // Map Spine event names to audio file URLs
   const audioEventMap = {
 	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
@@ -89,29 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
   };
 
-let currentAnimation = "";
-
-  player.addEventListener("ready", () => {
-    currentAnimation = player.animation.name;
-    console.log("Ready. Animation:", currentAnimation);
-  });
-
-  player.addEventListener("animation", (e) => {
-    currentAnimation = e.detail.name;
-    console.log("Switched animation to:", currentAnimation);
-  });
-
   player.addEventListener("event", (e) => {
-    console.log("Event triggered:", e.detail.name);
-    if (currentAnimation.startsWith("Talking_")) {
-      const audioSrc = audioEventMap[e.detail.name];
-      if (audioSrc) {
-        audioPlayer.src = audioSrc;
-        audioPlayer.currentTime = 0;
-        audioPlayer.play().catch(err => {
-          console.warn("Audio play blocked:", err);
-        });
-      }
+    const audioSrc = audioEventMap[e.detail.name];
+    if (audioSrc) {
+      audioPlayer.src = audioSrc;
+      audioPlayer.currentTime = 0;
+      audioPlayer.play().catch(err => {
+        console.warn("Audio play blocked:", err);
+      });
     }
   });
 });
