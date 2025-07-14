@@ -17,57 +17,15 @@
 
 <div id="player-container" style="width: 100%; height: 100vh;"></div>
 
-<script>
-new spine.SpinePlayer("player-container", {
-	
-<!-- Spine files are below -->
-	
-	skeleton: "Chara03_files/Chara03_08072025.json",
-	atlas: "Chara03_files/Chara03_08072025.atlas",
-  	png: "Chara03_files/Chara03_08072025.png",
-	png: "Chara03_files/Chara03_08072025_2.png",
-	
-<!-- Parameters are below -->
-	
-	animation: "Blink to Right",
-	animations: [
-			"Big Surprise",
-			"Talking_Bouncing Smile01",
-			"Talking_Bouncing Smile02",
-			"Talking_Close-Up01",
-			"Talking_Close-Up02",
-			"Talking_Look Up-Right01",
-			"Talking_Look Up-Right02",
-			"Talking_Very Happy to Right01",
-			"Talking_Very Happy to Right02",
-			"Blink to Right", 
-			"Bouncing Sad", 
-			"Bouncing Scare", 
-		     	"Bouncing Smile", 
-			"Close-Up",
-		     	"Happy to Right", 
-		    	"Idle", 
-		    	"Idle - Blink", 
-		     	"Look Up-Right", 
-		     	"Smile to Right",
-		     	"Very Happy", 
-		     	"Very Happy Delay", 
-		     	"Very Happy to Right"
-		    ],
-	defaultMix: 0.1,
-	backgroundColor: "#ffffffff",
-	
-});
-</script>
+<div id="player-container"></div>
+<audio id="voice-player" preload="auto"></audio>
 
-<!-- Audio element for playback -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const audioPlayer = document.getElementById("voice-player");
-  const player = document.querySelector("spine-player");
+  document.addEventListener("DOMContentLoaded", () => {
+    const audioPlayer = document.getElementById("voice-player");
 
-  // Map Spine event names to audio file URLs
-  const events = {
+     // Map Spine event names to audio file URLs
+  const audioEventMap = {
 	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
 	"NV_Hylia_Woman_Young_Normal01_CallFar00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar00.wav" },
 	"NV_Hylia_Woman_Young_Normal01_CallFar01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar01.wav" },
@@ -83,16 +41,59 @@ document.addEventListener("DOMContentLoaded", () => {
 	"NV_Hylia_Woman_Young_Normal01_TalkPositive00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive00.wav" },
 	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
   };
+    const player = new spine.SpinePlayer("player-container", {
+      skeleton: "Chara03_files/Chara03_08072025.json",
+      atlas: "Chara03_files/Chara03_08072025.atlas",
+      png: [
+        "Chara03_files/Chara03_08072025.png",
+        "Chara03_files/Chara03_08072025_2.png"
+      ],
+      animation: "Blink to Right",
+      animations: [
+        "Big Surprise",
+        "Talking_Bouncing Smile01",
+        "Talking_Bouncing Smile02",
+        "Talking_Close-Up01",
+        "Talking_Close-Up02",
+        "Talking_Look Up-Right01",
+        "Talking_Look Up-Right02",
+        "Talking_Very Happy to Right01",
+        "Talking_Very Happy to Right02",
+        "Blink to Right",
+        "Bouncing Sad",
+        "Bouncing Scare",
+        "Bouncing Smile",
+        "Close-Up",
+        "Happy to Right",
+        "Idle",
+        "Idle - Blink",
+        "Look Up-Right",
+        "Smile to Right",
+        "Very Happy",
+        "Very Happy Delay",
+        "Very Happy to Right"
+      ],
+      defaultMix: 0.1,
+      backgroundColor: "#ffffffff",
+      showControls: true
+    });
 
-  player.addEventListener("event", (e) => {
-    const audioSrc = events[e.detail.name];
-    if (audioSrc) {
-      audioPlayer.src = audioSrc;
-      audioPlayer.currentTime = 0;
-      audioPlayer.play().catch(err => {
-        console.warn("Audio play blocked:", err);
-      });
-    }
+    // Event listener for spine animation events
+    player.playerEvents.addEventListener("event", (e) => {
+      const eventName = e.detail.name;
+      console.log("Spine event triggered:", eventName);
+
+      const audioSrc = audioEventMap[eventName];
+      if (audioSrc) {
+        audioPlayer.src = audioSrc;
+        audioPlayer.currentTime = 0;
+        audioPlayer.play().catch(err => {
+          console.warn("Audio playback blocked:", err);
+        });
+      }
+    });
   });
-});
 </script>
+
+</body>
+</html>
