@@ -6,6 +6,9 @@
   }
 </style>
 
+<button id="start-btn">Click to Enable Sound</button>
+<audio id="voice-player" preload="auto"></audio>
+
 <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
 
@@ -55,10 +58,15 @@ new spine.SpinePlayer("player-container", {
 </script>
 
 <!-- Audio element for playback -->
-<audio id="voice-player" preload="auto"></audio>
-
 <script>
   const audioPlayer = document.getElementById("voice-player");
+  const startBtn = document.getElementById("start-btn");
+
+  // Enable sound after click
+  startBtn.addEventListener("click", () => {
+    audioPlayer.play().catch(() => {});
+    startBtn.style.display = "none";
+  });
 
   // Map Spine event names to audio file URLs
   const audioEventMap = {
@@ -78,26 +86,29 @@ new spine.SpinePlayer("player-container", {
 	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
   };
 
+const player = document.querySelector("spine-player");
   let currentAnimation = "";
-
-  // Helmet: Wait for spine-player to be ready
-  const player = document.querySelector("spine-player");
 
   player.addEventListener("ready", () => {
     currentAnimation = player.animation.name;
+    console.log("Ready. Current animation:", currentAnimation);
   });
 
   player.addEventListener("animation", (e) => {
     currentAnimation = e.detail.name;
+    console.log("Animation switched to:", currentAnimation);
   });
 
   player.addEventListener("event", (e) => {
-    if (!currentAnimation.startsWith("Talking_")) return;
-    const audioSrc = audioEventMap[e.detail.name];
-    if (audioSrc) {
-      audioPlayer.src = audioSrc;
-      audioPlayer.currentTime = 0;
-      audioPlayer.play();
+    console.log("Event detected:", e.detail.name);
+    if (currentAnimation.startsWith("Talking_")) {
+      const audioSrc = audioEventMap[e.detail.name];
+      if (audioSrc) {
+        console.log(" >> Attempting to play:", audioSrc);
+        audioPlayer.src = audioSrc;
+        audioPlayer.currentTime = 0;
+        audioPlayer.play().catch(err => console.warn("Play prevented:", err));
+      }
     }
   });
 </script>
