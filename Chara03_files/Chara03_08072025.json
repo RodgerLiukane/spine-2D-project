@@ -781,20 +781,20 @@
 	}
 ],
 "events": {
-	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_CallFar00": { "audio": "NV_Hylia_Woman_Young_Normal01_CallFar00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_CallFar01": { "audio": "NV_Hylia_Woman_Young_Normal01_CallFar01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Chat00": { "audio": "NV_Hylia_Woman_Young_Normal01_Chat00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Greeting00": { "audio": "NV_Hylia_Woman_Young_Normal01_Greeting00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Greeting01": { "audio": "NV_Hylia_Woman_Young_Normal01_Greeting01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Happy00": { "audio": "NV_Hylia_Woman_Young_Normal01_Happy00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Happy01": { "audio": "NV_Hylia_Woman_Young_Normal01_Happy01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Notice00": { "audio": "NV_Hylia_Woman_Young_Normal01_Notice00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Sad00": { "audio": "NV_Hylia_Woman_Young_Normal01_Sad00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Sad01": { "audio": "NV_Hylia_Woman_Young_Normal01_Sad01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_SurpriseL01": { "audio": "NV_Hylia_Woman_Young_Normal01_SurpriseL01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_TalkPositive00": { "audio": "NV_Hylia_Woman_Young_Normal01_TalkPositive00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
+	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_CallFar00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_CallFar01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar01.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Chat00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Chat00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Greeting00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Greeting00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Greeting01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Greeting01.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Happy00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Happy00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Happy01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Happy01.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Notice00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Notice00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Sad00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Sad00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_Sad01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_Sad01.wav" },
+	"NV_Hylia_Woman_Young_Normal01_SurpriseL01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_SurpriseL01.wav" },
+	"NV_Hylia_Woman_Young_Normal01_TalkPositive00": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive00.wav" },
+	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
 },
 "animations": {
 	"Big Surprise": {
