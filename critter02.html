@@ -1,0 +1,36 @@
+<!-- THIS PAGE IS USED AS A WEBPAGE STICKER (alpha, no-control, one-single animation -->
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+</style>
+
+<script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
+
+<div id="player-container" style="width: 100%; height: 100vh;"></div>
+
+<script>
+new spine.SpinePlayer("player-container", {
+	
+                      
+ // Spine files are below --------------------------------------------------------
+	
+	skeleton: "Critter02/Critter02.skel",
+	atlas: "CCritter02/Critter02.atlas",
+  png: "Critter02/Critter02.png",
+	png: "Critter02/Critter02_2.png",
+	
+// Parameters are below --------------------------------------------------------
+	
+	animation: "Leg-Swing", // DEFAULT ANIMATION NAME
+  showControls: false, // Hide the player controls
+ 	interactive: false, // Disable click and touch interactions
+	alpha: true, // Enable player translucency
+	backgroundColor: "#00000000" // Background is fully transparent
+	
+});
+</script>
