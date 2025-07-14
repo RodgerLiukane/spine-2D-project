@@ -62,14 +62,14 @@ new spine.SpinePlayer("player-container", {
 
 <!-- Audio element for playback -->
 <script>
+document.addEventListener("DOMContentLoaded", () => {
   const audioPlayer = document.getElementById("voice-player");
-  const startBtn = document.getElementById("start-btn");
+  const player = document.querySelector("spine-player");
 
-  // Enable sound after click
-  startBtn.addEventListener("click", () => {
-    audioPlayer.play().catch(() => {});
-    startBtn.style.display = "none";
-  });
+  if (!player) {
+    console.error("Spine player not found.");
+    return;
+  }
 
   // Map Spine event names to audio file URLs
   const audioEventMap = {
@@ -89,29 +89,30 @@ new spine.SpinePlayer("player-container", {
 	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
   };
 
-const player = document.querySelector("spine-player");
-  let currentAnimation = "";
+let currentAnimation = "";
 
   player.addEventListener("ready", () => {
     currentAnimation = player.animation.name;
-    console.log("Ready. Current animation:", currentAnimation);
+    console.log("Ready. Animation:", currentAnimation);
   });
 
   player.addEventListener("animation", (e) => {
     currentAnimation = e.detail.name;
-    console.log("Animation switched to:", currentAnimation);
+    console.log("Switched animation to:", currentAnimation);
   });
 
   player.addEventListener("event", (e) => {
-    console.log("Event detected:", e.detail.name);
+    console.log("Event triggered:", e.detail.name);
     if (currentAnimation.startsWith("Talking_")) {
       const audioSrc = audioEventMap[e.detail.name];
       if (audioSrc) {
-        console.log(" >> Attempting to play:", audioSrc);
         audioPlayer.src = audioSrc;
         audioPlayer.currentTime = 0;
-        audioPlayer.play().catch(err => console.warn("Play prevented:", err));
+        audioPlayer.play().catch(err => {
+          console.warn("Audio play blocked:", err);
+        });
       }
     }
   });
+});
 </script>
