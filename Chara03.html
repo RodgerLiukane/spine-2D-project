@@ -78,22 +78,18 @@
       showControls: true
     });
 
-    // Event listener for spine animation events
-    player.playerEvents.addEventListener("events", (e) => {
-      const eventName = e.detail.name;
-      console.log("Spine event triggered:", eventName);
-
-      const audioSrc = audioEventMap[eventName];
-      if (audioSrc) {
-        audioPlayer.src = audioSrc;
-        audioPlayer.currentTime = 0;
-        audioPlayer.play().catch(err => {
-          console.warn("Audio playback blocked:", err);
-        });
-      }
-    });
+    // Listen to events fired by Spine and play corresponding audio
+  player.playerEvents.addEventListener("events", (e) => {
+    const eventData = e.detail.data;
+    if (eventData && eventData.audio) {
+      const audioPath = "audio/" + eventData.audio;
+      console.log("🔊 Playing:", audioPath);
+      audioPlayer.src = audioPath;
+      audioPlayer.currentTime = 0;
+      audioPlayer.play().catch(err => {
+        console.warn("Playback blocked:", err);
+      });
+    }
   });
+});
 </script>
-
-</body>
-</html>
