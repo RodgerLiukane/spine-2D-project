@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const player = document.querySelector("spine-player");
 
   // Map Spine event names to audio file URLs
-  const audioEventMap = {
+  const events = {
 	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
 	"NV_Hylia_Woman_Young_Normal01_CallFar00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar00.wav" },
 	"NV_Hylia_Woman_Young_Normal01_CallFar01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar01.wav" },
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   player.addEventListener("event", (e) => {
-    const audioSrc = audioEventMap[e.detail.name];
+    const audioSrc = events[e.detail.name];
     if (audioSrc) {
       audioPlayer.src = audioSrc;
       audioPlayer.currentTime = 0;
