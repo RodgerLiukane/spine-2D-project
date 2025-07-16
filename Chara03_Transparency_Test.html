@@ -19,14 +19,19 @@ new spine.SpinePlayer("player-container", {
                       
  // Spine files are below --------------------------------------------------------
 	
-	skeleton: "Chara03_files/NADIA_files/Chara03.skel",
-	atlas: "Chara03_files/NADIA_files/Chara03.atlas",
-  	png: "Chara03_files/NADIA_files/Chara03.png",
-	png: "Chara03_files/NADIA_files/Chara03_2.png",
+	skeleton: "Chara03_files/NADIA_files/Chara03.json",
+      atlas: "Chara03_files/NADIA_files/Chara03.atlas",
+      png: [
+        "Chara03_files/NADIA_files/Chara03.png",
+        "Chara03_files/NADIA_files/Chara03_2.png",
+	"Chara03_files/NADIA_files/Chara03_3.png",
+	"Chara03_files/NADIA_files/Chara03_4.png"
+      ],
 	
 // Parameters are below --------------------------------------------------------
 	
 	animation: "Big Surprise", // DEFAULT ANIMATION NAME
+	skin: "full-skins/variant04", // Shown skin
   	showControls: false, // Hide the player controls
  	interactive: false, // Disable click and touch interactions
 	alpha: true, // Enable player translucency
