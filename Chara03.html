@@ -6,18 +6,18 @@
   }
 </style>
 
-<!-- Test line -->
-
 <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
 
 <div id="player-container" style="width: 100%; height: 100vh;"></div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const audioPlayer = document.getElementById("voice-player");
-    const player = new spine.SpinePlayer("player-container", {
-      skeleton: "Chara03_files/NADIA_files/Chara03.json",
+new spine.SpinePlayer("player-container", {
+	
+                      
+ // Spine files are below --------------------------------------------------------
+	
+	skeleton: "Chara03_files/NADIA_files/Chara03.json",
       atlas: "Chara03_files/NADIA_files/Chara03.atlas",
       png: [
         "Chara03_files/NADIA_files/Chara03.png",
@@ -27,6 +27,8 @@
 	"Chara03_files/NADIA_files/Chara03_5.png",
 	"Chara03_files/NADIA_files/Chara03_6.png"
       ],
+	
+// Parameters are below --------------------------------------------------------
       animation: "happy05",
       animations: [
 	      "angry01", "angry02", "angry03", "angry04",
