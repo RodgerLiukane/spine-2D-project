@@ -13,30 +13,9 @@
 
 <div id="player-container" style="width: 100%; height: 100vh;"></div>
 
-<div id="player-container"></div>
-<audio id="voice-player" preload="auto"></audio>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const audioPlayer = document.getElementById("voice-player");
-
-     // Map Spine event names to audio file URLs for test
-  const audioEventMap = {
-	"NV_Hylia_Woman_Young_Normal00_SurpriseS00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal00_SurpriseS00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_CallFar00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_CallFar01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_CallFar01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Chat00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Chat00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Greeting00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Greeting00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Greeting01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Greeting01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Happy00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Happy00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Happy01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Happy01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Notice00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Notice00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Sad00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Sad00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_Sad01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_Sad01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_SurpriseL01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_SurpriseL01.wav" },
-	"NV_Hylia_Woman_Young_Normal01_TalkPositive00": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive00.wav" },
-	"NV_Hylia_Woman_Young_Normal01_TalkPositive01": { "audio": "Chara03_files/NADIA_audio/NV_Hylia_Woman_Young_Normal01_TalkPositive01.wav" }
-  };
     const player = new spine.SpinePlayer("player-container", {
       skeleton: "Chara03_files/NADIA_files/Chara03.json",
       atlas: "Chara03_files/NADIA_files/Chara03.atlas",
@@ -44,51 +23,37 @@
         "Chara03_files/NADIA_files/Chara03.png",
         "Chara03_files/NADIA_files/Chara03_2.png",
 	"Chara03_files/NADIA_files/Chara03_3.png",
-	"Chara03_files/NADIA_files/Chara03_4.png"
+	"Chara03_files/NADIA_files/Chara03_4.png",
+	"Chara03_files/NADIA_files/Chara03_5.png",
+	"Chara03_files/NADIA_files/Chara03_6.png"
       ],
-      animation: "Blink to Right",
+      animation: "happy05",
       animations: [
-        "Big Surprise",
-        "Talking_Bouncing Smile01",
-        "Talking_Bouncing Smile02",
-        "Talking_Close-Up01",
-        "Talking_Close-Up02",
-        "Talking_Look Up-Right01",
-        "Talking_Look Up-Right02",
-        "Talking_Very Happy to Right01",
-        "Talking_Very Happy to Right02",
-        "Blink to Right",
-        "Bouncing Sad",
-        "Bouncing Scare",
-        "Bouncing Smile",
-        "Close-Up",
-        "Happy to Right",
-        "Idle",
-        "Idle - Blink",
-        "Look Up-Right",
-        "Smile to Right",
-        "Very Happy",
-        "Very Happy Delay",
-        "Very Happy to Right"
+	      "angry01", "angry02", "angry03", "angry04",
+	      "blink01", "blink02",
+	      "closeup01", "closeup02", "closeup03", "closeup04", 
+	      "happy01", "happy02", "happy03", "happy04", "happy05",
+	      "idle01", "idle02",
+	      "lookup01", "lookup02",
+	      "love01", "love02", "love03", "love04", 
+	      "sad01", "sad02", "sad03", 
+	      "scare01", "scare02", "scare03", 
+	      "smile01", "smile02", "smile03", 
+	      "surprise01", "surprise02",
+	      "talk01", "talk02", "talk03", "talk04", "talk05", "talk06", "talk07", "talk08"
       ],
 	skin: "full-skins/variant01", // Start with the "funky" skin
-	skins: ["full-skins/variant01", "full-skins/variant02", "full-skins/variant03", "full-skins/variant04"],
+	skins: [
+		"full-skins/variant01", 
+		"full-skins/variant02", 
+		"full-skins/variant03", 
+		"full-skins/variant04"
+	],
       defaultMix: 0.1,
       backgroundColor: "#ffffffff",
       showControls: true
     });
-
-    // Listen to events fired by Spine and play corresponding audio
-  player.playerEvents.addEventListener("events", (e) => {
-    const eventData = e.detail.data;
-    if (eventData && eventData.audio) {
-      const audioPath = "audio/" + eventData.audio;
-      console.log("🔊 Playing:", audioPath);
-      audioPlayer.src = audioPath;
-      audioPlayer.currentTime = 0;
-      audioPlayer.play().catch(err => {
-        console.warn("Playback blocked:", err);
-      });
+	  
     }
   });
 });
