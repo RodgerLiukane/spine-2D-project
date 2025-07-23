@@ -16,21 +16,23 @@ new spine.SpinePlayer("player-container", {
 	
 <!-- Spine files are below -->
 	
-	skeleton: "Critter01/Critter01.json",
+	skeleton: "Critter01/Critter01.skel",
 	atlas: "Critter01/Critter01.atlas",
 	png: "Critter01/Critter01.png",
 	png: "Critter01/Critter01_2.png",
+	png: "Critter01/Critter01_3.png"
 	
 <!-- Parameters are below -->
 	
-	animation: "Run",
+	animation: "run",
 	animations: [
-			    "Idle-Bounce", 
-		     	"Run", 
-		     	"Walk"
+			"idle-bounce", 
+		     	"run", 
+		     	"walk",
+			"portal"
 		    ],
-	skin: "Pink-Color", // Start with the "funky" skin
-	skins: ["Pink-Color", "Yellow-Color", "Sky-Color", "Green-Color", "Blue-Color"],
+	skin: "pink", // Start with the "funky" skin
+	skins: ["pink", "yellow", "sky", "green", "blue"],
 	defaultMix: 0.2,
 	backgroundColor: "#ffffffff",
 	
